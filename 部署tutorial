@@ -1,0 +1,39 @@
+linux环境 部署 llama factory 
+
+需要基本的几个依赖：
+python 
+torch
+transformer
+cuda
+
+需要对硬件版本进行配置
+
+模型的部署，比如qwen，glm等模型
+glm4-9b-chat
+1. 远程连接autodl 服务器 可以使用xshell，finalshell，或者用pycharm远程连接
+2. 找到glm的github地址，git clone https://github.com/THUDM/GLM-4.git
+3. 安装环境，如果是autodl，它有别人配好的，可以直接配。如果是干净的linux，首先按照conda虚拟环境：conda create --name glm4 python=3.11
+然后进入文件夹 ：
+# 进入指定路径
+cd GLM-4/basic_demo
+
+# 执行如下命令安装依赖
+pip install -r requirements.txt
+
+4. 下载就完事了。或者用modelscope，这个官网有教程
+5. 启动模型：openai_api_server.py 这个是openaiapi 的形式， trans_clli_demo.py是命令行， trans_web_demo.py webui交互形式
+
+或者使用代码：
+from openai import OpenAI
+
+base_url = "http://192.168.110.131:9091/v1/"    # 注意： 这里替换成自己的 endpoint url
+client = OpenAI(api_key="EMPTY", base_url=base_url)
+
+messages = [{"role": "user", "content": "你好，请你介绍一下你自己"}]
+
+response = client.chat.completions.create(
+    model="glm-4",
+    messages=messages,
+)
+
+print(response.choices[0].message.content)
