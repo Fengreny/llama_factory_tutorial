@@ -1,0 +1,18 @@
+LLaMA-Factory私有化部署
+
+- Python >= 3.8版本，建议Python3.10版本以上
+- PyTorch >= 1.13.1版本，建议 Pytorch 版本为 2.2.1
+- transformers >= 4.37.2，建议 transformers 版本为 4.38.1
+- CUDA >= 11.6，建议CUDA版本为12.2
+
+1. 安装NVIDIA显卡驱动 
+2. 安装anaconda
+3. 使用Conda创建LLaMA-Factory的Python虚拟环境
+4. 根据CUDA版本要求安装Pytorch：https://pytorch.org/get-started/previous-versions/
+5. 验证安装GPU 版Pytorch是否成功
+6. 下载LLaMA-Factory的项目文件      git clone https://github.com/hiyouga/LLaMA-Factory.git
+7. 建议升级 pip版本
+8. 使用pip安装LLaMA-Factory项目代码运行的项目依赖 
+    pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
+
+9. 微调qwen2 insruct。 llama有一个weibui的前端界面应用，train_web.py
